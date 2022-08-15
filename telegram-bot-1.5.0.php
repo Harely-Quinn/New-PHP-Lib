@@ -942,32 +942,7 @@ class Bot {
 
    
 
-    public function edit_caption($chat_id = "", $message_id = "", $inline_message_id = "", $caption, $parse_mode = "", $caption_entities = [], $reply_markup = []) {
-        /*
-            $chat_id: Optional[`int` OR `str`<Channel username>] (use if $inline_message_id is not specified)
-            $message_id: Optional[`int`] (use if $inline_message_id is not specified)
-            $inline_message_id: Optional[`str`] (use if $chat_id and $message_id are not specified)
-            $caption: `str` 0-1024 characters
-            $parse_mode: Optional[`str`[Markdown | MarkdownV2 | HTML]]
-            $caption_entities: Optional[`array`[*:method:`MessageEntity.create()`]]
-            $reply_markup: Optional[:method:`InlineKeyboardMarkup.create()`]
-        */
-
-        $url = $this->URL .
-            "editMessageCaption?chat_id=" . $chat_id .
-            "&message_id=" . $message_id .
-            "&inline_message_id=" . $inline_message_id .
-            "&caption=" . urlencode($caption) .
-            "&parse_mode=" . $parse_mode .
-            "&caption_entities=" . json_encode($caption_entities) .
-            "&reply_markup=" . json_encode($reply_markup);
-
-        // if ($caption_entities) $url .= "&caption_entities=" . json_encode($caption_entities);
-        // if ($reply_markup) $url .= "&reply_markup=" . json_encode($reply_markup);
-
-        $r = $this->request($url);
-        return $r ? ($r["ok"] ? ($inline_message_id ? $r["result"] : new Message($r["result"])) : new Err($r)) : false;
-    }
+   
 
     public function edit_media($chat_id = "", $message_id = "", $inline_message_id = "", $media, $reply_markup = []) {
         /*
