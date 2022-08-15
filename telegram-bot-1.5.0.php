@@ -944,30 +944,6 @@ class Bot {
 
    
 
-    public function edit_media($chat_id = "", $message_id = "", $inline_message_id = "", $media, $reply_markup = []) {
-        /*
-            $chat_id: Optional[`int` OR `str`<Channel username>] (use if $inline_message_id is not specified)
-            $message_id: Optional[`int`] (use if $inline_message_id is not specified)
-            $inline_message_id: Optional[`str`] (use if $chat_id and $message_id are not specified)
-            $media: :method:`InputMediaAudio.create()` OR
-                            `InputMediaDocument.create()` OR
-                            `InputMediaPhoto.create()` OR
-                            `InputMediaVideo.create()
-            $reply_markup: Optional[:method:`InlineKeyboardMarkup.create()`]
-        */
-
-        $url = $this->URL .
-            "editMessageMedia?chat_id=" . $chat_id .
-            "&message_id=" . $message_id .
-            "&inline_message_id=" . $inline_message_id .
-            "&media=" . json_encode($media) .
-            "&reply_markup=" . json_encode($reply_markup);
-
-        // if ($reply_markup) $url .= "&reply_markup=" . json_encode($reply_markup);
-
-        $r = $this->request($url);
-        return $r ? ($r["ok"] ? ($inline_message_id ? $r["result"] : new Message($r["result"])) : new Err($r)) : false;
-    }
 
     public function edit_reply_markup($chat_id = "", $message_id = "", $inline_message_id = "", $reply_markup = []) {
         /*
