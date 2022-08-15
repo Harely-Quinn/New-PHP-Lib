@@ -4036,32 +4036,6 @@ class InlineQueryResultCachedSticker {
     }
 }
 
-class InputTextMessageContent {
-    /*
-        Represents the content of a text message to be sent as the result of an
-        inline query.
-    */
-
-    function __construct($IMC_text) {
-    }
-
-    public static function create($message_text, $parse_mode = "", $entities = [] . $no_preview = false) {
-        /*
-            $message_text: `str` 1-4096 characters
-            $parse_mode: Optional[`str`[Markdown | MarkdownV2 | HTML]]
-            $entities: Optional[`array`[*:method:`MessageEntity.create()`]]
-            $no_preview: Optional[`bool`] Default: false
-        */
-
-        $IMC_text = [
-            "message_text" => $message_text
-        ];
-        if ($parse_mode) $IMC_text["parse_mode"] = $parse_mode;
-        if ($entities) $IMC_text["entities"] = $entities;
-        if ($no_preview) $IMC_text["no_preview"] = $no_preview;
-        return $IMC_text;
-    }
-}
 
 class InputLocationMessageContent {
     /*
