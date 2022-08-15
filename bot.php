@@ -24,8 +24,9 @@ if ($update->message) {
 
 
 if ($update->message) {
-        $bot->send_dice($update->message->chat->id, $emoji = "🎲", $silent = false, $protected = false, $reply_to = "", $force_reply = false, $reply_markup = null);
+ if ($update->message->text == "Hello") {
+        $bot->send_dice($update->message->chat->id, $emoji = "🎲");
     }
-
+}
 
 ?>
