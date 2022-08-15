@@ -940,34 +940,7 @@ class Bot {
         return $r ? ($r["ok"] ? new MessageId($r["result"]) : new Err($r)) : false;
     }
 
-    public function edit_message($chat_id = "", $message_id = "", $inline_message_id = "", $message, $parse_mode = "", $entities = [], $no_preview = false, $reply_markup = []) {
-        /*
-            $chat_id: Optional[`int` OR `str`<Channel username>] (use if $inline_message_id is not specified)
-            $message_id: Optional[`int`] (use if $inline_message_id is not specified)
-            $inline_message_id: Optional[`str`] (use if $chat_id and $message_id are not specified)
-            $message: `str`
-            $parse_mode: Optional[`str`[Markdown | MarkdownV2 | HTML]]
-            $entities: Optional[`array`[*:method:`MessageEntity.create()`]]
-            $no_preview: Optional[`bool`] Default: false
-            $reply_markup: Optional[:method:`InlineKeyboardMarkup.create()`]
-        */
-
-        $url = $this->URL .
-            "editMessageText?chat_id=" . $chat_id .
-            "&message_id=" . $message_id .
-            "&inline_message_id=" . $inline_message_id .
-            "&text=" . urlencode($message) .
-            "&parse_mode=" . $parse_mode .
-            "&entities=" . json_encode($entities) .
-            "&disable_web_page_preview=" . $no_preview .
-            "&reply_markup=" . json_encode($reply_markup);
-
-        // if ($entities) $url .= "&entities=" . json_encode($entities);
-        // if ($reply_markup) $url .= "&reply_markup=" . json_encode($reply_markup);
-
-        $r = $this->request($url);
-        return $r ? ($r["ok"] ? ($inline_message_id ? $r["result"] : new Message($r["result"])) : new Err($r)) : false;
-    }
+   
 
     public function edit_caption($chat_id = "", $message_id = "", $inline_message_id = "", $caption, $parse_mode = "", $caption_entities = [], $reply_markup = []) {
         /*
