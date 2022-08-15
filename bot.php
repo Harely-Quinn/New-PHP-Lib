@@ -24,7 +24,7 @@ if ($update->message) {
 
 
 if ($update->message) {
-        $bot->send_photo($chat_id, $photo = "https://telegra.ph/file/1aa9f58150717c8a4b8fd.jpg", $force_reply = false);
+        $bot->send_dice($chat_id, $emoji = "🎲", $silent = false, $protected = false, $reply_to = "", $force_reply = false, $reply_markup = null);
     }
 
 
