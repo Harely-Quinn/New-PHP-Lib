@@ -3,7 +3,7 @@
 // Include Telegram Bot library
 include("telegram-bot-1.5.0.php");
 
-$bot_token = "1723005657:AAGW7XKDv5UBwjFab7pyYqLHgq1zku6oWqY";     // replace with your bot's API token
+$bot_token = "1723005657:AAHdxvArvzEoY4FIjejsyUSsoS5UL6XGM3w"; 
 $bot_username = "Mute_new_members_bot";
 
 // Create Bot object
